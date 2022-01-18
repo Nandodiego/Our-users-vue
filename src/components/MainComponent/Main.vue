@@ -38,7 +38,13 @@ export default {
                 console.error(error);
             }
         },
-        showMeMore(){
+        async showMeMore(){
+            try{
+                const response = await RandomUserServices.getUser();
+                this.userInformation = [...this.userInformation, ...response.data.results]
+            }catch(error){
+                console.error(error);
+            }
         }
     },
     async mounted(){
